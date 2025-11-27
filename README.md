@@ -88,10 +88,6 @@ Has Read: true
 ---
 ```
 
-## Known Issues
-
-- **Silent failure on last book in list**: When using the `fetch-list` command, if the last book in the list fails to process, the error is not reported and the command exits with a success status code. This can make it difficult to identify failures when processing book lists.
-
 ## Project Structure
 
 ```

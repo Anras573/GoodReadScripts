@@ -102,8 +102,6 @@ async Task<int> HandleFetchBookListMetadataCommand(ParseResult parseResult, Canc
             Error? error = null;
             foreach (var url in response.BookUrls)
             {
-                if (error is not null) return await HandleError(error);
-                
                 var fetchRequest = new FetchBookMetadataRequest(url);
                 var fetchHandler = new FetchBookMetadataHandler(goodReadClient, htmlContentParser);
                 var fetchResult = await fetchHandler.HandleAsync(fetchRequest, cancellationToken);
@@ -122,6 +120,8 @@ async Task<int> HandleFetchBookListMetadataCommand(ParseResult parseResult, Canc
                         Console.WriteLine($"Metadata saved to: {saveResponse.FilePath}");
                     }, failure => error = failure);
                 }, failure => Task.FromResult(error = failure));
+                
+                if (error is not null) return await HandleError(error);
             }
 
             return 0;
