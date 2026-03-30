@@ -51,7 +51,7 @@ public class HtmlContentParser : IHtmlContentParser
             pagesFormat = ["0", "unknown"];
 
         if (!int.TryParse(pagesFormat[0], out var pages))
-            return new Error("Number of pages not found");
+            pagesFormat = ["0", "unknown"];
 
         List<string> format = [pagesFormat[^1]];
 
