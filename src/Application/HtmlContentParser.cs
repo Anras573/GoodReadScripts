@@ -47,7 +47,8 @@ public class HtmlContentParser : IHtmlContentParser
             .InnerText
             .Split([" "], StringSplitOptions.RemoveEmptyEntries);
 
-        if (pagesFormat == null) return new Error("Pages format not found");
+        if (pagesFormat is null or [])
+            pagesFormat = ["0", "unknown"];
 
         if (!int.TryParse(pagesFormat[0], out var pages))
             return new Error("Number of pages not found");
