@@ -57,9 +57,9 @@ public class HtmlContentParser : IHtmlContentParser
 
         var genres = doc
             .DocumentNode
-            .SelectNodes("//div[@data-testid='genresList']")
+            .SelectNodes("//div[@data-testid='genresList']")?
             .FirstOrDefault()?
-            .FirstChild
+            .FirstChild?
             .ChildNodes
             .Descendants()
             .Where(x => x.Name == "a")

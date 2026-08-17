@@ -11,6 +11,8 @@ using GoodReadScripts.Infrastructure;
 using GoodReadScripts.Utils;
 
 var httpClient = new HttpClient();
+httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36");
 var goodReadClient = new GoodReadClient(httpClient);
 var htmlContentParser = new HtmlContentParser();
 var fileSystem = new FileSystem();
